@@ -15,7 +15,7 @@ Bob push le résultat sur la chaine, et recupère son argent et celui d'Alice.
 La liste des ordres est stoquée dans Ordre[] public listeOrdre;  
 Chacun de ses ordre a une variable Ordre.etape qui symbolise où en est l'ordre. Au début l'ordre est à l'étape 0, quand qqn le prends il passe à l'étape 1, et ainsi de suite. Du coup on peut prendre un ordre seulement si il est à l'étape 0, et ainsi de suite. 
 
-##### Modifiers
+#### Modifiers
 
 Pour imposer ce méchanisme des étapes il y a le modifier etape(uint \_indiceOrdre, uint \_etape) qui vérifie si on est à la bonne étape, execute le contrat, puis incrémente l'étape (ça je suis pas sur que ça s'execute comme ça mais j'imagine).
 
@@ -54,7 +54,7 @@ Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la b
 
 #### Etape 3 : Alice récupère le résultat du calcul. Fonction voir_reponse(uint \_indiceOrdre) view
 
-Si le contrat est terminée cette fonction view renvoit ce que Bob avait push pour remplir le contrat.
+Si le contrat est terminé cette fonction view renvoit ce que Bob avait push pour remplir le contrat.
 
 
 
