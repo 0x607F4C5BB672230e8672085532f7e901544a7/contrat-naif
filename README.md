@@ -52,5 +52,9 @@ Cette fonction bloque l'argent de Bob, et modifie dans Ordre l'adresse que le co
 Le contrat vérifie si la preuve de travail est ok (bon ça j'ai pas fait du coup même si ça doit pas être loin).  
 Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la blockchain.
 
+#### Etape 3 : Alice récupère le résultat du calcul. Fonction voir_reponse(uint \_indiceOrdre) view
+
+Si le contrat est terminée cette fonction view renvoit ce que Bob avait push pour remplir le contrat.
+
 
 
