@@ -15,6 +15,16 @@ Bob push le résultat sur la chaine, et recupère son argent et celui d'Alice.
 La liste des ordres est stoquée dans Ordre[] public listeOrdre;  
 Chacun de ses ordre a une variable Ordre.etape qui symbolise où en est l'ordre. Au début l'ordre est à l'étape 0, quand qqn le prends il passe à l'étape 1, et ainsi de suite. Du coup on peut prendre un ordre seulement si il est à l'étape 0, et ainsi de suite. 
 
+##### Modifiers
+
+Pour imposer ce méchanisme des étapes il y a le modifier etape(uint \_indiceOrdre, uint \_etape) qui vérifie si on est à la bonne étape, execute le contrat, puis incrémente l'étape (ça je suis pas sur que ça s'execute comme ça mais j'imagine).
+
+On a également deux modifiers est_alice(uint \_indiceOrdre) et est_bob(uint \_indiceOrdre) qui impose que celui qui appelle la fonction soit celui qui a posé l'ordre (Alice) et celui qui a pris l'ordre (Bob).
+
+Et enfin pour bloquer l'argent on a paiement_alice(uint \_indiceOrdre) et paiement_bob(uint \_indiceOrdre) qui bloque l'argent de Alice et de Bob.
+
+Enfin on a contrat_fini(uint \_indiceOrdre) qui impose que le contrat soit à l'étape 3, c'est utile pour la fonction view voir_reponse(uint \_indiceOrdre) qui permets à Alice de récupérer le résultat de son calcul.
+
 ## Déroulement du contrat
 
 Deux participants : Alice et Bob
@@ -40,7 +50,7 @@ Cette fonction bloque l'argent de Bob, et modifie dans Ordre l'adresse que le co
 #### Etape 2 : Bob complète l'ordre. Fonction completer_un_ordre(uint \_indiceOrdre, string memory \_reponse)
 
 Le contrat vérifie si la preuve de travail est ok (bon ça j'ai pas fait du coup même si ça doit pas être loin).  
-Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la blockchain
+Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la blockchain.
 
 
 
