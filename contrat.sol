@@ -121,7 +121,7 @@ function strConcat(string memory _a, string memory _b, string memory _c) interna
     
     //Maintenant Bob peut donner le résultat de son calcul
     function completer_un_ordre(uint _indiceOrdre, string memory _reponse) public est_bob(_indiceOrdre) etape(_indiceOrdre, 2) {
-        Ordre memory ordrePris = listeOrdre[_indiceOrdre];
+        Ordre storage ordrePris = listeOrdre[_indiceOrdre];
         string memory solution = strConcat(ordrePris.hash, "-", _reponse);
         uint nombre = uint(keccak256(abi.encodePacked(solution)));
         //Si c'est pas bon on return
