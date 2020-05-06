@@ -31,26 +31,27 @@ Deux participants : Alice et Bob
 
 #### Etape -1 : Alice pose un ordre sur la marketplace. Fonction creer_un_ordre(uint \_pow, uint \_lockAlice, uint \_lockBob)
 
-Elle précise la preuve de travail qui doit être effectuée. C'est l'argument \_pow qui sera Ordre.pow.  
-Elle précise combien d'argent elle va payer. C'est l'argument \_lockAlice qui sera Ordre.lockAlice.  
-Elle précise combien d'argent Bob va lock. C'est l'argument \_lockBob qui sera Ordre.lockBob.
+Elle précise la preuve de travail qui doit être effectuée. C'est l'argument \_pow qui sera Ordre.pow !  
+Elle précise combien d'argent elle va payer. C'est l'argument \_lockAlice qui sera Ordre.lockAlice !  
+Elle précise combien d'argent Bob va lock. C'est l'argument \_lockBob qui sera Ordre.lockBob !  
+Enfin ça retient l'adresse d'Alice pour que elle seule (avec Bob) puisse agir sur ce contrat. Ce sera Ordre.adresseAlice !
 
 Le reste des arguments de la struct est rempli de valeurs par défaut
 
 #### Etape 0 : Bob prends un ordre de la marketplace. Fonction prendre_un_ordre(uint \_indiceOrdre)
 
-\_indiceOrdre indique à quel contrat on fait référence. C'est l'indice du tableau listeOrdre.
-
-Cette fonction bloque l'argent de Bob, et modifie dans Ordre l'adresse que le contrat va payer si le contrat s'execute correctement.
+\_indiceOrdre indique à quel contrat on fait référence. C'est l'indice du tableau listeOrdre.  
+Cette fonction bloque l'argent de Bob, et modifie dans Ordre l'adresse que le contrat va payer si le contrat s'execute correctement.  
+Ainsi l'adresse de Bob sera Ordre.adresseBob !
 
 #### Etape 1 : Alice précise l'ordre de la marketplace qu'elle avait déjà posé et qu'on lui a pris. Fonction preciser_un_ordre(uint \_indiceOrdre, string memory \_hash)
 
-\_hash précise la chaine sur la laquelle effectuer la preuve de travail.
+\_hash précise la chaine sur la laquelle effectuer la preuve de travail. Ce sera Ordre.hash !
 
 #### Etape 2 : Bob complète l'ordre. Fonction completer_un_ordre(uint \_indiceOrdre, string memory \_reponse)
 
 Le contrat vérifie si la preuve de travail est ok (bon ça j'ai pas fait du coup même si ça doit pas être loin).  
-Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la blockchain.
+Et si la preuve de travail est ok ça paye Bob et stoque la blockchain dans la blockchain. Ce sera Ordre.reponse !
 
 #### Etape 3 : Alice récupère le résultat du calcul. Fonction voir_reponse(uint \_indiceOrdre) view
 
