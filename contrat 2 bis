@@ -1,0 +1,61 @@
+pragma solidity ^0.6;
+
+contract Ballot {
+    
+    //On dit qu'on a un truc qui vérifie addresse et signature du coup
+    function verify(address _adresse, string memory _signature) public view returns(bool) {
+        return true;
+    }
+    
+    //Structure du jeu entre les deux joueurs
+    //Du coup ils se mettent d'accord en dehors de la chaine et ensuite qqn push le truc ici
+    //Leurs signatures sont vérifiés lors de la creation de l'ordre
+    struct Ordre {
+        //Les adresses des deux joueurs
+        address alice;
+        address bob;
+        //Les coups que vont jouer les joueurs
+        uint coup_alice;
+        uint coup_bob;
+        //Le gagnant
+        uint fin; //0 pas fini, 1 alice gagnante, 2 bobo gagnant
+        uint date;
+        //Les coups
+        uint[] coups;
+        string[] sigs;
+    }
+    
+    //La liste des ordres qui sont posés
+    Ordre[] public listeOrdre;
+    
+    //Pour créer un ordre sur la marketplace
+    function creer_un_ordre(address _alice, string memory _sig_alice, address _bob, string memory _sig_bob) public {
+        string[] memory sigs = new string[](2);
+        sigs[0] = _sig_alice;
+        sigs[1] = _sig_bob;
+        listeOrdre.push(Ordre(_alice, _bob, 0, 0, 0, now, new uint[](0), sigs));
+    }
+    
+    //Pour prendre un ordre qui a été posé sur la marketplace
+    function prendre_un_ordre(uint _indiceOrdre, string memory _sig, uint coup) public {
+        Ordre storage ordre = listeOrdre[_indiceOrdre];
+        ordre.coups.push(coup);
+        ordre.sigs.push(_sig);
+    }
+    
+    //Une fois l'ordre accepté Alice peut préciser son ordre
+    function resoudre_lordre(uint _indiceOrdre, uint _fin) public payable {
+        require(msg.value == 1 ether);
+        Ordre storage ordre = listeOrdre[_indiceOrdre];
+        ordre.fin = _fin;
+    }
+    
+    function challenger_lordre(uint _indiceOrdre, uint _fin) public {
+        Ordre storage ordre = listeOrdre[_indiceOrdre];
+        require(ordre.fin != _fin);
+        //On fait le challenge pour récupérer l'argent
+    }
+}
+
+
+
