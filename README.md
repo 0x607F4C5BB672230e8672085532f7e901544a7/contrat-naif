@@ -18,8 +18,9 @@ la résolution est une fonction qui regarde si on peut décider le vainqeuuer (l
 Pour pas qu'il y ait de triche on peut faire pareil en imposant au joeur de d'abord commit leur coup (si leur coup est c ils commit la chaine de caractères qu'ils veunlent et on parse juste le premier caractère de la chaine pour avoir le coup), et une fois que les deux joeurus ont commit ils revelent
 
 
-Prix 1 : 99.999999999999739857
-Prix 2 : 98.999999999999458736 
+Prix 1 : 99.999999999999739857  
+Prix 2 : 98.999999999999458736  
+Diff : 280k
 
 
 
