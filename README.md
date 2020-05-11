@@ -1,26 +1,22 @@
 # Contrat naif 2
 
-2 personnes temoignent leur envie de jouer (sans forcement connaître leur adversaire)
+"2 personnes temoignent leur envie de jouer (sans forcement connaître leur adversaire)
 les 2 personnes sont mise en relation (debut du jeu)
 chacun fait son action (asynchronisme?)
 On resoud leurs action
-En l'absence d'action, on resoud
+En l'absence d'action, on resoud"
 
 
 
-En pseudocode c'est :
+Du coup en pseudocode c'est :
 
-chaque joueur signe un ordre
-on push cet ordre sur la blockchain, on push avec les adress/signatures des joueurs
-chaque joueur peut agir sur cet ordre et indiquer le coup qu'il veut faire
-la résolution est une fonction qui regarde si on peut décider le vainqeuuer (les 2 ont joués et/ou ça fait 24H) et elle decide le vainqueur
+chaque joueur signe un ordre qui corresponds à son envie de jouer
+On push ces deux signatures d'un coup sur la blockchain, avec cela on push les adresses des joueurs
+Ensuite chaque joueur peut appeler le contrat pour indiquer le coup qu'il veut faire
+La résolution est une fonction qui regarde les coups joués et elle décide le vainqueur si elle le peut, c'est à dire si les deux joueurs ont joués ou si 24H se sont écoulés
 
-Pour pas qu'il y ait de triche on peut faire pareil en imposant au joeur de d'abord commit leur coup (si leur coup est c ils commit la chaine de caractères qu'ils veunlent et on parse juste le premier caractère de la chaine pour avoir le coup), et une fois que les deux joeurus ont commit ils revelent
+Pour éviter la triche on peut imposer dans les premières 24H aux joueurs de commit leurs coups (en pushant par exemple un hash), puis dans les deuxièmes 24H de les reveler.
 
-
-Prix 1 : 99.999999999999739857  
-Prix 2 : 98.999999999999458736  
-Diff : 280k
 
 
 
